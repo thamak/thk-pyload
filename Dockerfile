@@ -29,6 +29,8 @@ RUN apt-get update \
 
 RUN ln -s /usr/bin/js24 /usr/bin/js
 
+ADD run.sh /run.sh
+
 RUN git clone -b stable https://github.com/pyload/pyload.git /opt/pyload \
   && echo "/opt/pyload/pyload-config" > /opt/pyload/module/config/configdir \
   && chmod +x /run.sh

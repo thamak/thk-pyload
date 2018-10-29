@@ -25,7 +25,7 @@ RUN apt-get update \
   && apt-get -y build-dep rar unrar-nonfree \
   && apt-get source -b unrar-nonfree \
   && dpkg -i unrar_*_armhf.deb \
-  && rm -rf unrar-* \
+  && rm -rf unrar-*
 
 RUN ln -s /usr/bin/js24 /usr/bin/js
 

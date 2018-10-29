@@ -29,5 +29,13 @@ RUN apt-get update \
 
 RUN ln -s /usr/bin/js24 /usr/bin/js
 
-RUN git clone -b stable https://github.com/pyload/pyload.git /opt/pyload
-RUN sudo -u pyload python /opt/pyload/pyLoadCore.py
+RUN git clone -b stable https://github.com/pyload/pyload.git /opt/pyload \
+  && echo "/opt/pyload/pyload-config" > /opt/pyload/module/config/configdir \
+  && chmod +x /run.sh
+
+ADD pyload-config/ /tmp/pyload-config
+
+EXPOSE 8000 7227
+VOLUME ["/opt/pyload/pyload-config", "/opt/pyload/Downloads"]
+
+CMD ["/run.sh"]

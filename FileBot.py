@@ -16,8 +16,7 @@ class FileBot(Addon):
         self.log_info("FileBot Download Init")
 
     def doSomeWork(self, pyfile):
-        print "This is equivalent to the above example." + self.config.get('command')
-        self.log_info("FileBot Download Finished")
+        self.log_info("FileBot Download Finished: " + self.config.get('command'))
 
     def someMethod(self):
         print "The underlying event (allDownloadsFinished) for this method is not available through the base class"

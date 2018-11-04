@@ -1,3 +1,4 @@
+import os
 from ..internal.Addon import Addon
 
 class FileBot(Addon):
@@ -16,7 +17,9 @@ class FileBot(Addon):
         self.log_info("FileBot Download Init")
 
     def doSomeWork(self, pyfile):
-        self.log_info("FileBot Download Finished: " + self.config.get('command'))
+        cmd = self.config.get('command')
+        self.log_info("FileBot Download Finished: " + cmd)
+        os.system(cmd)
 
     def someMethod(self):
         print "The underlying event (allDownloadsFinished) for this method is not available through the base class"

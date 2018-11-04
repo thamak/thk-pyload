@@ -9,7 +9,7 @@ from ..internal.Notifier import Notifier
 class Telegram(Notifier):
     __name__ = "Telegram"
     __type__ = "hook"
-    __version__ = "0.01"
+    __version__ = "0.1"
     __status__ = "testing"
 
     __config__ = [("activated", "bool", "Activated", False),
@@ -23,7 +23,7 @@ class Telegram(Notifier):
                   ("packagefailed", "bool", "Notify package failed", True),
                   ("update", "bool", "Notify pyLoad update", False),
                   ("exit", "bool", "Notify pyLoad shutdown/restart", False),
-                  ("sendinterval", "int",                  "Interval in seconds between notifications", 1),
+                  ("sendinterval", "int", "Interval in seconds between notifications", 1),
                   ("sendpermin", "int", "Max notifications per minute", 60),
                   ("ignoreclient", "bool", "Send notifications if client is connected", True)]
 
@@ -32,16 +32,17 @@ class Telegram(Notifier):
     __authors__ = [("Thamak", "")]
 
     def get_key(self):
-        return self.config.get('tokenkey')
+        return self.config.get('botapikey')
 
     def get_chatid(self):
         return self.config.get('chatid')
 
     def send(self, event, msg, key):
-        req = get_request()
-        #url='https://api.telegram.org/bot{0}/sendMessage'.format(str(key))
+        self.log_info("Sending message to Telegram")
 
-        self.load("https://api.telegram.org/bot314995357:AAHpYBup9B6Ckd8alpMTY4Cb08YyqA21oxM/sendMessage",
-                post={'chat_id': '322102500',
-                      'text': 'kikoo'},
+        req = get_request()
+        url='https://api.telegram.org/bot{0}/sendMessage'.format(str(key))
+
+        self.load(url,
+                post={'chat_id': self.get_chatid(), 'text': '[{0}] {1}'.format(event, msg)},
                 req=req)

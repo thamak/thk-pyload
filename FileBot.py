@@ -1,6 +1,6 @@
-from module.plugins.Hook import Hook
+from ..internal.Addon import Addon
 
-class FileBot(Hook):
+class FileBot(Addon):
     __name__ = "FileBot"
     __type__ = "hook"
     __version__ = "0.1"
@@ -11,13 +11,10 @@ class FileBot(Hook):
     __config__ = [("activated", "bool", "Activated", True),
                   ("command", "str", "Custom command", "")]
 
-    event_map = {
-      "downloadFinished" : "doSomeWork",
-      "coreReady": "initialize"
-    }
-
-    def initialize(self):
+    def init(self):
+        self.event_map = {'downloadFinished': "doSomeWork"}
         print "Initialized."
+        self.log_info("Hello from FileBot ADDON")
 
     def doSomeWork(self, pyfile):
         print "This is equivalent to the above example." + self.config.get('command')

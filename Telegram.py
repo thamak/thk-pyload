@@ -39,9 +39,9 @@ class Telegram(Notifier):
 
     def send(self, event, msg, key):
         req = get_request()
-        url='https://api.telegram.org/bot{0}/sendMessage'.format(str(key))
+        #url='https://api.telegram.org/bot{0}/sendMessage'.format(str(key))
 
-        self.load(url,
-                post={'chat_id': self.get_chatid(),
-                      'text': '[{0}] {1}'.format(event, msg)},
+        self.load("https://api.telegram.org/bot314995357:AAHpYBup9B6Ckd8alpMTY4Cb08YyqA21oxM/sendMessage",
+                post={'chat_id': '322102500',
+                      'text': 'kikoo'},
                 req=req)

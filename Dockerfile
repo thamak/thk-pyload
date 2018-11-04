@@ -37,6 +37,8 @@ RUN git clone -b stable https://github.com/pyload/pyload.git /opt/pyload \
 
 ADD pyload-config/ /tmp/pyload-config
 
+ADD Telegram.py /opt/pyload/module/plugins/hooks/Telegram.py
+
 EXPOSE 8000 7227
 VOLUME ["/opt/pyload/pyload-config", "/opt/pyload/Downloads"]
 

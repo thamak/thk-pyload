@@ -13,6 +13,7 @@ class FileBot(Addon):
 
     def init(self):
         self.event_map = {'downloadFinished': "doSomeWork"}
+        self.log_info("FileBot Download Init")
 
     def doSomeWork(self, pyfile):
         print "This is equivalent to the above example." + self.config.get('command')

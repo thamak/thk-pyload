@@ -18,5 +18,5 @@ class RunCommand(Addon):
 
     def doSomeWork(self, pyfile):
         cmd = self.config.get('command')
-        self.log_info("RunCommand Download Finished: " + cmd)
-        os.system(cmd)
+        self.log_info("Download Finished: " + cmd)
+        self.log_info(os.popen(cmd).read())

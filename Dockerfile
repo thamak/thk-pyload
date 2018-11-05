@@ -42,6 +42,8 @@ ADD pyload-config/ /tmp/pyload-config
 ADD Telegram.py /opt/pyload/module/plugins/hooks/Telegram.py
 ADD RunCommand.py /opt/pyload/module/plugins/hooks/RunCommand.py
 
+ADD runFilebot.sh /runFilebot.sh
+
 EXPOSE 8000 7227
 VOLUME ["/opt/pyload/pyload-config", "/opt/pyload/Downloads"]
 

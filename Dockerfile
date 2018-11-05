@@ -9,7 +9,9 @@ RUN apt-get update \
   && apt-get upgrade --force-yes --yes \
   && apt-get install -y git \
     nano \
+    wget \
     liblept4 \
+    libltdl7 \
     python \
     python-pycurl \
     python-crypto \
@@ -38,6 +40,7 @@ RUN git clone -b stable https://github.com/pyload/pyload.git /opt/pyload \
 ADD pyload-config/ /tmp/pyload-config
 
 ADD Telegram.py /opt/pyload/module/plugins/hooks/Telegram.py
+ADD RunCommand.py /opt/pyload/module/plugins/hooks/RunCommand.py
 
 EXPOSE 8000 7227
 VOLUME ["/opt/pyload/pyload-config", "/opt/pyload/Downloads"]

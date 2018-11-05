@@ -1,12 +1,12 @@
 import os
 from ..internal.Addon import Addon
 
-class FileBot(Addon):
-    __name__ = "FileBot"
+class RunCommand(Addon):
+    __name__ = "RunCommand"
     __type__ = "hook"
     __version__ = "0.1"
     __status__ = "testing"
-    __description__ = "Do FileBot stuff"
+    __description__ = "Do RunCommand stuff"
     __license__ = "GPLv3"
     __authors__ = [("Thamak", "")]
     __config__ = [("activated", "bool", "Activated", True),
@@ -14,12 +14,9 @@ class FileBot(Addon):
 
     def init(self):
         self.event_map = {'downloadFinished': "doSomeWork"}
-        self.log_info("FileBot Download Init")
+        self.log_info("RunCommand Download Init")
 
     def doSomeWork(self, pyfile):
         cmd = self.config.get('command')
-        self.log_info("FileBot Download Finished: " + cmd)
+        self.log_info("RunCommand Download Finished: " + cmd)
         os.system(cmd)
-
-    def someMethod(self):
-        print "The underlying event (allDownloadsFinished) for this method is not available through the base class"
